@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native';
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { styles } from '../styles/_joinstyle';
-import { HEROLOGOGREEN, GOOGLELOGO, FACEBOOKLOGO } from '../constants';
+import { styles } from '@/styles/_joinstyle';
+import { HEROLOGOGREEN, GOOGLELOGO, FACEBOOKLOGO } from '@/constants';
 
-export default function Join() {
+export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const handleCreateAccount = () => {
-    router.replace('/home');
-  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -26,19 +21,11 @@ export default function Join() {
       </View>
 
       <View style={styles.titleTextGroup}>
-        <Text style={styles.titleText}>Join Now</Text>
-        <Text style={styles.subText}>Create your account to get started</Text>
+        <Text style={styles.titleText}>Sign In</Text>
+        <Text style={styles.subText}>Welcome back! Sign in to your account</Text>
       </View>
 
       <View style={styles.formGroup}>
-        <View>
-          <Text style={styles.formLabel}>Full Name</Text>
-          <TextInput 
-            style={styles.formControl}
-            placeholder="Enter your full name"
-          />
-        </View>
-
         <View>
           <Text style={styles.formLabel}>Email</Text>
           <TextInput 
@@ -64,28 +51,13 @@ export default function Join() {
               />
             </TouchableOpacity>
           </View>
+          <TouchableOpacity>
+            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          </TouchableOpacity>
         </View>
 
-        <View>
-          <Text style={styles.formLabel}>Confirm Password</Text>
-          <View style={styles.formPasswordControl}>
-            <TextInput 
-              style={styles.passwordControl}
-              placeholder="Confirm your password"
-              secureTextEntry={!showConfirmPassword}
-            />
-            <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-              <Ionicons 
-                name={showConfirmPassword ? "eye-off" : "eye"} 
-                size={24} 
-                color="#7B7B7B" 
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <TouchableOpacity style={styles.primaryButton} onPress={handleCreateAccount}>
-          <Text style={styles.buttonText}>Create Account</Text>
+        <TouchableOpacity style={styles.primaryButton}>
+          <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
 
         <View style={styles.dividerGroup}>
@@ -108,9 +80,9 @@ export default function Join() {
       </View>
 
       <View style={styles.signupgroup}>
-        <Text style={styles.signupTitleText}>Already have an account? </Text>
-        <Link href="/signin">
-          <Text style={styles.signupSubTitleText}>Sign In</Text>
+        <Text style={styles.signupTitleText}>Don&apos;t have an account? </Text>
+        <Link href="/join">
+          <Text style={styles.signupSubTitleText}>Join Now</Text>
         </Link>
       </View>
     </SafeAreaView>
